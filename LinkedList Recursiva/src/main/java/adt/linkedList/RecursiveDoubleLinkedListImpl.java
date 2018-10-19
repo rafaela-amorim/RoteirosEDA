@@ -91,7 +91,7 @@ public class RecursiveDoubleLinkedListImpl<T> extends
 			while (!last.getNext().isEmpty())
 				last = (RecursiveDoubleLinkedListImpl<T>) last.getNext();
 			
-			while (first != last && last.getPrevious() != first) {
+			while (first != last) {
 				aux = first.getData();
 				first.setData(last.getData());
 				last.setData(aux);
