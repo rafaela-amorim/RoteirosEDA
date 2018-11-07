@@ -1,8 +1,8 @@
 # RoteirosEDA
 Todos os roteiros de eda até agora
 
-Roteiro de Revisão 3 - Exercícios de recursão;
-Roteiro 01 - Bubble, Selection e Insertion Sorts;
+Roteiro de Revisão 3 - Exercícios de recursão;\n
+Roteiro 01 - Bubble, Selection e Insertion Sorts;\n
 Roteiro 02 - Merge, Quick Sorts e ThreeWayQuickSort;
 Roteiro 03 - CountingSort;
 Roteiro 04 - Gnome e Comb Sorts;
