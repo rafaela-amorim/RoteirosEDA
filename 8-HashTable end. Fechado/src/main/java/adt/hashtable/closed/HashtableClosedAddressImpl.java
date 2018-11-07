@@ -2,6 +2,8 @@ package adt.hashtable.closed;
 
 import java.util.LinkedList;
 
+import adt.hashtable.AbstractHashtable;
+import adt.hashtable.Hashtable;
 import adt.hashtable.hashfunction.HashFunction;
 import adt.hashtable.hashfunction.HashFunctionClosedAddress;
 import adt.hashtable.hashfunction.HashFunctionClosedAddressMethod;
@@ -54,78 +56,84 @@ public class HashtableClosedAddressImpl<T> extends AbstractHashtableClosedAddres
     * prime.
     */
    int getPrimeAbove(int number) {
-	   int saida = number;
-	   while (!Util.isPrime(number))
-		   saida = ++number;
-	  
-	   return saida;
+	   int primeNumber = number;
+	   while (!Util.isPrime(primeNumber))
+		   primeNumber++;
+	   
+	   return primeNumber;
    }
 
-   @SuppressWarnings({ "unchecked", "rawtypes" })
+   @SuppressWarnings("unchecked")
    @Override
    public void insert(T element) {
 	   if (element != null) {
-		   int indice = ((HashFunctionClosedAddress) this.hashFunction).hash(element); 
+		   int index = ((HashFunctionClosedAddress<T>) hashFunction).hash(element);
 		   
-		   if (verificaLinkedListNull(indice)) {} 
-		   else			 COLLISIONS++;
+		   if (((AbstractHashtable<T>) table[index]).isEmpty())
+			   table[index] = new LinkedList<>();
+		   else
+			   COLLISIONS++;
 		   
-		   ((LinkedList<T>) table[indice]).add(element);
 		   elements++;
+		   table[index] = element;
 	   }
    }
 
-   @SuppressWarnings({ "unchecked", "rawtypes" })
+   @SuppressWarnings("unchecked")
    @Override
    public void remove(T element) {
-	   if (element != null) {
-		   int indice = ((HashFunctionClosedAddress) this.hashFunction).hash(element);
-		   if (!verificaLinkedListNull(indice) && ((LinkedList<T>) table[indice]).contains(element)) {
-			   ((LinkedList<T>) table[indice]).remove(element);
-			   elements--;
+	   if (element != null && !isEmpty()) {
+		   int index = ((HashFunctionClosedAddress<T>) hashFunction).hash(element);
+		   LinkedList<T> aux = (LinkedList<T>) table[index];
+		   
+		   if (!aux.isEmpty()) {
+			   if (aux.contains(element)) {
+				   aux.remove(element);
+				   elements--;
+			   }
 		   }
 	   }
    }
 
-   @SuppressWarnings({ "unchecked", "rawtypes" })
+   @SuppressWarnings("unchecked")
    @Override
    public T search(T element) {
-	   T saida = null;
+	   T answer = null;
 	   
 	   if (element != null) {
-		   int indice = ((HashFunctionClosedAddress) this.hashFunction).hash(element);
+		   int index = ((HashFunctionClosedAddress<T>) hashFunction).hash(element);
 		   
-		   if (!verificaLinkedListNull(indice) && ((LinkedList<T>) table[indice]).contains(element)) {
-			   int aux = ((LinkedList<T>) table[indice]).indexOf(element);
-			   saida = (T) ((LinkedList<T>) table[indice]).get(aux);
+		   if (!((LinkedList<T>) table[index]).isEmpty()) {
+			   int indiceAux = ((Hashtable<T>) table[index]).indexOf(element);
+			   answer = (T) ((LinkedList<Object>) table[index]).get(indiceAux);
 		   }
 	   }
 	   
-	   return saida;
+	   return answer;
    }
 
-   @SuppressWarnings({ "rawtypes", "unchecked" })
+   @SuppressWarnings("unchecked")
    @Override
    public int indexOf(T element) {
-	   int saida = -1;
-	   int aux = ((HashFunctionClosedAddress) this.hashFunction).hash(element);	   
+	   int answer = -1;
 	   
-	   if (element != null && !verificaLinkedListNull(aux) && ((LinkedList<T>) table[aux]).contains(element))
-		   saida = aux;
+	   if (element != null) {
+		   int index = ((HashFunctionClosedAddress<T>) hashFunction).hash(element);
 		   
-	   return saida;
-   }
-   
-   @SuppressWarnings("unchecked")
-   private boolean verificaLinkedListNull(int posicao) {
-	   boolean ehNull = true;
+		   if (!((LinkedList<T>) table[index]).isEmpty()) 
+			   answer = ((LinkedList<T>) table[index]).indexOf(element);
+		   
+	   }
 	   
-	   if (((LinkedList<T>) table[posicao]) == null)
-		   table[posicao] = new LinkedList<>();
-	   else
-		   ehNull = false;
-	   
-	   return ehNull;
+	   return answer;
    }
    
 }
+
+
+
+
+
+
+
+
