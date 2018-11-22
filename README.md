@@ -15,9 +15,9 @@ Todos os roteiros de eda até agora
 11. Roteiro 11 - Extended BST;
 12. Roteiro 12 - Heap Binária;
 13. Roteiro 13 - AVL;
-14. Roteiro 14 - ;
-15. Roteiro 15 - ;
-16. Roteiro 16 - ;
+14. Roteiro 14 - Extended AVL;
+15. Roteiro 15 - SkipList;
+16. Roteiro 16 - Árvore PV;
 17. Roteiro 17 - ;
 18. Roteiro 18 - ;
 19. Roteiro 19 - ;
