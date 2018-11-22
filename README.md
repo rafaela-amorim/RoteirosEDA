@@ -18,6 +18,4 @@ Todos os roteiros de eda até agora
 14. Roteiro 14 - Extended AVL;
 15. Roteiro 15 - SkipList;
 16. Roteiro 16 - Árvore PV;
-17. Roteiro 17 - ;
-18. Roteiro 18 - ;
-19. Roteiro 19 - ;
+17. Roteiro 17 - Árvore B;
