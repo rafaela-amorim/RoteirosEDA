@@ -1,5 +1,5 @@
-# RoteirosEDA
-Todos os roteiros de eda até agora
+# RoteirosLEDA
+Todos os roteiros da disciplina Laboratório de Estruturas de Dados e Algoritmos
  
 * Roteiro de Revisão 3 - Exercícios de recursão;
 1. Roteiro 01 - Bubble, Selection e Insertion Sorts;
